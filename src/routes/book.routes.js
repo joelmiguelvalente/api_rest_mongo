@@ -40,11 +40,13 @@ router.get('/', async (req, res) => {
 // Crear nuevo libro (recurso) [POST]
 router.post('/', async (req, res) => {
    const { title, author, genre, publication_date } = req?.body
+
 	if (!title || !author || !genre || !publication_date) {
       return res.status(400).json({
          message: 'Los campos título, autor, género y fecha son obligatorios'
       })
    }
+   
    const book = new Book({
       title,
       author,
